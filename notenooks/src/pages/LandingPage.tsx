@@ -1,8 +1,38 @@
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, BookOpen, FileText, GraduationCap } from "lucide-react"
+import { ArrowRight, BookOpen, FileText, GraduationCap, Plus, Minus } from "lucide-react"
+import { useState } from "react"
 
 export default function LandingPage() {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index)
+  }
+
+  const faqs = [
+    {
+      question: "How does TeachAssist generate course materials?",
+      answer: "TeachAssist uses advanced AI to analyze your uploaded PDFs and course materials. It then generates tests, quizzes, homework assignments, and teaching aids based on the content, saving you time and effort in creating these materials yourself."
+    },
+    {
+      question: "Is my content secure when I upload it?",
+      answer: "Yes, all your uploaded content is securely stored with encryption. We do not share your materials with third parties, and your content remains your intellectual property at all times."
+    },
+    {
+      question: "What file formats are supported?",
+      answer: "Currently, TeachAssist supports PDF files. We use OCR technology to convert PDFs to searchable text, even if they contain scanned pages or images."
+    },
+    {
+      question: "Can I edit the generated materials?",
+      answer: "Absolutely! All generated materials can be fully edited to suit your specific needs. You can customize questions, reorganize content, and make any changes before finalizing your materials."
+    },
+    {
+      question: "Does TeachAssist offer a free trial?",
+      answer: "Yes, we offer a free tier that allows you to try our core features with limited usage. You can upgrade to a premium plan anytime to access additional features and higher usage limits."
+    }
+  ]
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b w-full">
@@ -101,6 +131,42 @@ export default function LandingPage() {
                   Keep all your teaching materials organized in one place with easy access and management.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="py-12 md:py-24 w-full">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Frequently Asked Questions</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Find answers to common questions about TeachAssist
+                </p>
+              </div>
+            </div>
+            
+            <div className="mx-auto max-w-3xl divide-y">
+              {faqs.map((faq, index) => (
+                <div key={index} className="py-6">
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="flex w-full justify-between items-center text-left"
+                  >
+                    <h3 className="text-lg font-medium">{faq.question}</h3>
+                    {openFAQ === index ? (
+                      <Minus className="h-5 w-5 text-primary" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-primary" />
+                    )}
+                  </button>
+                  {openFAQ === index && (
+                    <div className="mt-3 text-muted-foreground">
+                      <p>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
