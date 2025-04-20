@@ -5,8 +5,8 @@ import { ArrowRight, BookOpen, FileText, GraduationCap } from "lucide-react"
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b">
-        <div className="container flex h-16 items-center justify-between">
+      <header className="border-b w-full">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 ml-6">
             <GraduationCap className="h-6 w-6" />
             <span className="text-xl font-bold">TeachAssist</span>
@@ -22,8 +22,8 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="py-20 md:py-32">
-          <div className="container px-4 md:px-6">
+      <section className="py-20 md:py-32 w-full">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="ml-6 flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
