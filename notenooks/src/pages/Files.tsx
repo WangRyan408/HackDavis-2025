@@ -21,48 +21,61 @@ export default function Files() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">Your Files</h1>
-        <Button className="gap-1.5" onClick={() => setShowUpload(!showUpload)}>
+        <h1 className="text-3xl font-bold tracking-tight text-[#1C7D73]">Your Files</h1>
+        <Button 
+          className="gap-1.5 bg-black hover:bg-black/80 text-white transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md" 
+          onClick={() => setShowUpload(!showUpload)}
+        >
           <Plus className="h-4 w-4" />
           Upload File
         </Button>
       </div>
 
       {showUpload && (
-        <div className="bg-card border rounded-lg p-6 mb-6">
+        <div className="bg-white border border-[#A7EFE4] rounded-lg p-6 mb-6 shadow-sm">
           <FileUpload />
         </div>
       )}
 
-      <div className="rounded-md border">
+      <div className="rounded-md border border-[#A7EFE4] bg-white shadow-sm">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-[#F0FEFA]">
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Size</TableHead>
-              <TableHead>Uploaded</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="text-[#1C7D73] font-semibold">Name</TableHead>
+              <TableHead className="text-[#1C7D73] font-semibold">Size</TableHead>
+              <TableHead className="text-[#1C7D73] font-semibold">Uploaded</TableHead>
+              <TableHead className="text-[#1C7D73] font-semibold text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {files.map((file, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} className="hover:bg-[#F8FFFD] transition-colors">
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    <div className="bg-primary/10 p-2 rounded-md">
-                      <FileText className="h-4 w-4 text-primary" />
+                    <div className="bg-[#DAFFF9] p-2 rounded-md">
+                      <FileText className="h-4 w-4 text-[#2BAEA1]" />
                     </div>
-                    <span className="font-medium">{file.name}</span>
+                    <span className="font-medium text-[#1C7D73]">{file.name}</span>
                   </div>
                 </TableCell>
-                <TableCell>{file.size}</TableCell>
-                <TableCell>{file.date}</TableCell>
+                <TableCell className="text-[#2A9E92]">{file.size}</TableCell>
+                <TableCell className="text-[#2A9E92]">{file.date}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
-                    <Button variant="ghost" size="icon" title="Download">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      title="Download"
+                      className="hover:bg-[#DAFFF9] hover:text-[#2BAEA1] transition-all duration-200 hover:translate-y-[-2px]"
+                    >
                       <Download className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" title="Delete">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      title="Delete"
+                      className="hover:bg-red-50 hover:text-red-500 transition-all duration-200 hover:translate-y-[-2px]"
+                    >
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
