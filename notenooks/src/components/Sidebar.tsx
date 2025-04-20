@@ -5,12 +5,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { BookOpen, FileText, GraduationCap, LayoutDashboard, LogOut } from "lucide-react"
 import { useNavigate } from "react-router-dom"
-import NoteNooksLogo from "/src/assets/NoteNooks_Logo.png"
+import { useAuth0 } from "@auth0/auth0-react";
+import NoteNooksLogo from "../assets/NoteNooks_Logo.png"
 
 export default function Sidebar() {
   const location = useLocation()
   const navigate = useNavigate()
-
+  const { logout } = useAuth0();
+  
   const isActive = (path: string) => {
     return location.pathname === path
   }
@@ -73,12 +75,7 @@ export default function Sidebar() {
               <p className="text-xs text-muted-foreground">jane@example.com</p>
             </div>
           </div>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={handleLogout}
-            className="hover:bg-[#DAFFF9] hover:text-[#2BAEA1] transition-all duration-200 hover:translate-y-[-2px]"
-          >
+          <Button variant="ghost" size="icon" onClick={() => logout({ logoutParams: { returnTo: "http://localhost:5173" } })}>
             <LogOut className="h-4 w-4" />
           </Button>
         </div>

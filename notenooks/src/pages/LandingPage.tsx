@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, BookOpen, FileText, GraduationCap, Check, LucideIcon, BarChart3, Zap, Clock, Brain } from "lucide-react"
 import NoteNooksLogo from "/src/assets/NoteNooks_Logo.png"
 import { useEffect, useState } from "react"
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Custom animated background component
 const AnimatedBackground = () => {
@@ -75,7 +76,7 @@ const PricingCard = ({ title, price, description, features, highlighted = false 
 export default function LandingPage() {
   const [scrollY, setScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState("home")
-
+  const { loginWithRedirect } = useAuth0();
   // Add scroll handling for navigation and parallax effects
   useEffect(() => {
     const handleScroll = () => {
@@ -271,12 +272,7 @@ export default function LandingPage() {
           
           {/* Login and Register - Right Side */}
           <div className="flex items-center gap-3 pl-4">
-            <Link to="/login">
-              <Button variant="ghost" className="text-[#2BAEA1] hover:text-[#239085] hover:bg-[#DAFFF9] transition-all duration-200 hover:translate-y-[-1px] text-base font-medium px-5">Login</Button>
-            </Link>
-            <Link to="/register">
-              <Button className="bg-black hover:bg-black/80 text-white transition-all duration-200 hover:translate-y-[-1px] hover:shadow-md text-base font-medium px-5">Register</Button>
-            </Link>
+             <Button onClick={() => loginWithRedirect()}>Login/Register</Button>
           </div>
         </nav>
       </header>
