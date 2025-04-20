@@ -63,12 +63,12 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="py-12 md:py-24 bg-gray-50 dark:bg-gray-900 w-full">
+        <section id="features" className="py-12 md:py-24 bg-muted w-full">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Features</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Our platform offers powerful tools to help teachers create better course materials faster.
                 </p>
               </div>
@@ -79,7 +79,7 @@ export default function LandingPage() {
                   <FileText className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">PDF Upload & Processing</h3>
-                <p className="text-center text-gray-500 dark:text-gray-400">
+                <p className="text-center text-muted-foreground">
                   Upload your PDFs and our system will convert them to searchable text using advanced OCR technology.
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function LandingPage() {
                   <BookOpen className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">AI-Generated Materials</h3>
-                <p className="text-center text-gray-500 dark:text-gray-400">
+                <p className="text-center text-muted-foreground">
                   Generate tests, homework assignments, and teaching aids based on your uploaded content.
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function LandingPage() {
                   <GraduationCap className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Organized Content</h3>
-                <p className="text-center text-gray-500 dark:text-gray-400">
+                <p className="text-center text-muted-foreground">
                   Keep all your teaching materials organized in one place with easy access and management.
                 </p>
               </div>
@@ -107,12 +107,12 @@ export default function LandingPage() {
       </main>
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
-          <p className="text-sm text-gray-500 dark:text-gray-400">© 2025 TeachAssist. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© 2025 TeachAssist. All rights reserved.</p>
           <div className="flex gap-4">
-            <Link to="/terms" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+            <Link to="/terms" className="text-sm text-muted-foreground hover:underline">
               Terms
             </Link>
-            <Link to="/privacy" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+            <Link to="/privacy" className="text-sm text-muted-foreground hover:underline">
               Privacy
             </Link>
           </div>
