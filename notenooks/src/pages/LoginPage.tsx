@@ -1,4 +1,3 @@
-"use client"
 
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -13,10 +12,10 @@ export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     setIsLoading(true)
 
     try {

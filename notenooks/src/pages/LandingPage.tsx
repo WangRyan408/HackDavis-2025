@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, BookOpen, FileText, GraduationCap } from "lucide-react"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LandingPage() {
+  const { loginWithRedirect } = useAuth0();
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b w-full">
@@ -12,12 +14,7 @@ export default function LandingPage() {
             <span className="text-xl font-bold">TeachAssist</span>
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/login">
-              <Button variant="ghost">Login</Button>
-            </Link>
-            <Link to="/register">
-              <Button>Register</Button>
-            </Link>
+              <Button onClick={() => loginWithRedirect()}>Login/Register</Button>
           </div>
         </div>
       </header>

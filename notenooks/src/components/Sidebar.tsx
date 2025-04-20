@@ -1,5 +1,4 @@
-"use client"
-
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -7,9 +6,9 @@ import { BookOpen, FileText, GraduationCap, LayoutDashboard, LogOut } from "luci
 import { useNavigate } from "react-router-dom"
 
 export default function Sidebar() {
-  const location = useLocation()
-  const navigate = useNavigate()
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth0();
   const isActive = (path: string) => {
     return location.pathname === path
   }
@@ -63,7 +62,7 @@ export default function Sidebar() {
               <p className="text-xs text-muted-foreground">jane@example.com</p>
             </div>
           </div>
-          <Button variant="ghost" size="icon" onClick={handleLogout}>
+          <Button variant="ghost" size="icon" onClick={() => logout({ logoutParams: { returnTo: "http://localhost:5173" } })}>
             <LogOut className="h-4 w-4" />
           </Button>
         </div>
