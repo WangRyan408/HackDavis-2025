@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { GraduationCap, ArrowLeft } from "lucide-react"
 import { type FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import NoteNooksLogo from "/src/assets/NoteNooks_Logo.png"
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("")
@@ -53,91 +54,138 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
-      <Link
-        to="/"
-        className="absolute top-4 left-4 p-2 flex items-center text-gray-500 hover:text-gray-700 transition-colors"
-      >
-        <ArrowLeft className="h-5 w-5 mr-1" />
-        <span>Back</span>
-      </Link>
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <div className="flex justify-center mb-4">
-            <GraduationCap className="h-10 w-10 text-primary" />
-          </div>
-          <CardTitle className="text-2xl font-bold text-center">Create an account</CardTitle>
-          <CardDescription className="text-center">Enter your information to create an account</CardDescription>
-        </CardHeader>
-        <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First name</Label>
-                <Input
-                  id="firstName"
-                  placeholder="Michael"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last name</Label>
-                <Input
-                  id="lastName"
-                  placeholder="Scott"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m.scott@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-          </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? "Creating account..." : "Register"}
-            </Button>
-            <div className="text-center text-sm">
-              Already have an account?{" "}
-              <Link to="/login" className="text-primary hover:underline">
-                Login
+    <div className="flex min-h-screen bg-[#DAFFF9]">
+      <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96">
+          <div className="flex flex-col items-center">
+            <img className="h-16 w-auto" src={NoteNooksLogo} alt="NoteNooks" />
+            <h2 className="mt-6 text-3xl font-bold tracking-tight text-[#1C7D73]">Create a new account</h2>
+            <p className="mt-2 text-sm text-[#2A9E92]">
+              Or{" "}
+              <Link to="/login" className="font-medium text-[#2BAEA1] hover:text-[#239085] transition-all duration-200">
+                login to an existing account
               </Link>
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <div className="mt-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-[#1C7D73]">
+                    Full name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      className="block w-full rounded-md border-[#A7EFE4] px-3 py-2 shadow-sm focus:border-[#2BAEA1] focus:outline-none focus:ring-1 focus:ring-[#2BAEA1]"
+                      value={`${firstName} ${lastName}`}
+                      onChange={(e) => {
+                        const [firstName, lastName] = e.target.value.split(" ")
+                        setFirstName(firstName)
+                        setLastName(lastName)
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-[#1C7D73]">
+                    Email address
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      className="block w-full rounded-md border-[#A7EFE4] px-3 py-2 shadow-sm focus:border-[#2BAEA1] focus:outline-none focus:ring-1 focus:ring-[#2BAEA1]"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="password" className="block text-sm font-medium text-[#1C7D73]">
+                    Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      autoComplete="current-password"
+                      required
+                      className="block w-full rounded-md border-[#A7EFE4] px-3 py-2 shadow-sm focus:border-[#2BAEA1] focus:outline-none focus:ring-1 focus:ring-[#2BAEA1]"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="confirm-password" className="block text-sm font-medium text-[#1C7D73]">
+                    Confirm password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="confirm-password"
+                      name="confirm-password"
+                      type="password"
+                      required
+                      className="block w-full rounded-md border-[#A7EFE4] px-3 py-2 shadow-sm focus:border-[#2BAEA1] focus:outline-none focus:ring-1 focus:ring-[#2BAEA1]"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center">
+                  <input
+                    id="terms"
+                    name="terms"
+                    type="checkbox"
+                    required
+                    className="h-4 w-4 rounded border-[#A7EFE4] text-[#2BAEA1] focus:ring-[#2BAEA1]"
+                  />
+                  <label htmlFor="terms" className="ml-2 block text-sm text-[#1C7D73]">
+                    I agree to the{" "}
+                    <Link to="/terms" className="font-medium text-[#2BAEA1] hover:text-[#239085] transition-all duration-200">
+                      terms and conditions
+                    </Link>
+                  </label>
+                </div>
+
+                <div>
+                  <Button
+                    type="submit"
+                    className="flex w-full justify-center bg-[#2BAEA1] text-white hover:bg-[#239085] transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Creating account..." : "Register"}
+                  </Button>
+                </div>
+              </form>
             </div>
-          </CardFooter>
-        </form>
-      </Card>
+          </div>
+        </div>
+      </div>
+      <div className="relative hidden w-0 flex-1 lg:block">
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-[#DAFFF9] to-[#2BAEA1]/60">
+          <div className="flex h-full items-center justify-center">
+            <div className="px-8 text-center">
+              <h1 className="text-4xl font-bold text-[#1C7D73] drop-shadow-md">Start creating better teaching materials</h1>
+              <p className="mt-4 text-xl text-[#1C7D73]">Join thousands of educators using NoteNooks to enhance their teaching</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

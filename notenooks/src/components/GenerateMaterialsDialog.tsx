@@ -71,7 +71,7 @@ export function GenerateMaterialsDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="gap-1.5">
+        <Button className="gap-1.5 bg-black hover:bg-black/80 text-white transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md">
           <Plus className="h-4 w-4" />
           Generate Materials
         </Button>
@@ -142,7 +142,7 @@ export function GenerateMaterialsDialog() {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit" disabled={isLoading}>
+            <Button type="submit" disabled={isLoading} className="bg-black hover:bg-black/80 text-white transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md">
               {isLoading ? "Generating..." : "Generate"}
             </Button>
           </DialogFooter>
