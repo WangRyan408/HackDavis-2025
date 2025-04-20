@@ -63,8 +63,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="py-12 md:py-24 bg-gray-50 dark:bg-gray-900">
-          <div className="container px-4 md:px-6">
+        <section id="features" className="py-12 md:py-24 bg-gray-50 dark:bg-gray-900 w-full">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Features</h2>
